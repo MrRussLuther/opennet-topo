@@ -52,7 +52,7 @@ from mininet.opennet import *
 def myTopo():
 
     net = Mininet(controller=RemoteController)
-    net.addController('c0', controller=RemoteController, ip="127.0.0.1", port=6633)
+    c0 = net.addController('c0', controller=RemoteController, ip="127.0.0.1", port=6633)
     sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
     sw1 = net.addSwitch('sw1', ip=None, failMode='standalone')
 
@@ -68,7 +68,8 @@ def myTopo():
     wifi.addSta(sta0, channelNumber=2, ssid="myNetwork_0")
     wifi.addSta(sta1, channelNumber=10, ssid="myNetwork_1")
 
-    net.addLink(sw0, sw1)
+    net.addLink(c0, sw0)
+    net.addLink(c0, sw1)
 
     net.addLink(sw0, wap0)
     net.addLink(sw1, wap1)
