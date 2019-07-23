@@ -30,11 +30,10 @@ Each WAP has three hosts connected via wifi
 """
 
 from mininet.net import Mininet
-from mininet.node import Node, Switch, RemoteController, OVSSwitch
+from mininet.node import Node, Switch, RemoteController
 from mininet.link import Link, Intf
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
-from mininet.topo import Topo
 
 import mininet.ns3
 from mininet.ns3 import WIFISegment
@@ -53,7 +52,7 @@ from mininet.opennet import *
 def myTopo():
 
     net = Mininet(controller=RemoteController)
-    net.addController('c0', controller=RemoteController, ip="192.168.0.1", port=6633)
+    net.addController('c0', controller=RemoteController, ip="127.0.0.1", port=6633)
     sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
     sw1 = net.addSwitch('sw1', ip=None, failMode='standalone')
 
