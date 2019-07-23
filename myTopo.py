@@ -52,7 +52,7 @@ from mininet.opennet import *
 
 def myTopo():
 
-    net = Mininet(controller=lambda name: RemoteController(name, ip='127.0.0.1'))
+    net = Mininet()
     sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
     sw1 = net.addSwitch('sw0', ip=None, failMode='standalone')
 
