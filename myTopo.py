@@ -53,8 +53,8 @@ def myTopo():
 
     net = Mininet(controller=RemoteController)
     c0 = net.addController('c0', controller=RemoteController, ip="127.0.0.1", port=6633)
-    sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
-    sw1 = net.addSwitch('sw1', ip=None, failMode='standalone')
+    sw0 = net.addSwitch('sw0', ip="192.168.0.4", failMode='standalone')
+    sw1 = net.addSwitch('sw1', ip="192.168.0.5", failMode='standalone')
 
     wap0 = net.addSwitch('wap0', ip=None, failMode='standalone')
     wap1 = net.addSwitch('wap1', ip=None, failMode='standalone')
@@ -62,11 +62,11 @@ def myTopo():
     sta1 = net.addHost('sta1', ip="192.168.0.3")
 
     wifi = WIFISegment()
-    wifi.addAp(wap0, channelNumber=2, ssid="myNetwork_0")
-    wifi.addAp(wap1, channelNumber=10, ssid="myNetwork_1")
+    wifi.addAp(wap0, channelNumber=2, ssid="myNetwork")
+    wifi.addAp(wap1, channelNumber=10, ssid="myNetwork")
 
-    wifi.addSta(sta0, channelNumber=2, ssid="myNetwork_0")
-    wifi.addSta(sta1, channelNumber=10, ssid="myNetwork_1")
+    wifi.addSta(sta0, channelNumber=2, ssid="myNetwork")
+    wifi.addSta(sta1, channelNumber=10, ssid="myNetwork")
 
     net.addLink(c0, sw0)
     net.addLink(c0, sw1)
