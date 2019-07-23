@@ -54,7 +54,7 @@ def myTopo():
 
     net = Mininet()
     sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
-    sw1 = net.addSwitch('sw0', ip=None, failMode='standalone')
+    sw1 = net.addSwitch('sw1', ip=None, failMode='standalone')
 
     wap0 = net.addSwitch('wap0', ip=None, failMode='standalone')
     wap1 = net.addSwitch('wap1', ip=None, failMode='standalone')
@@ -68,8 +68,7 @@ def myTopo():
     wifi.addSta(sta0, channelNumber=2, ssid="myNetwork_0")
     wifi.addSta(sta1, channelNumber=10, ssid="myNetwork_1")
 
-    #net.addLink(controller, switch0)
-    #net.addLink(controller, switch1)
+    net.addLink(sw0, sw1)
 
     net.addLink(sw0, wap0)
     net.addLink(sw1, wap1)
