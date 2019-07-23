@@ -52,7 +52,8 @@ from mininet.opennet import *
 
 def myTopo():
 
-    net = Mininet()
+    net = Mininet(controller=RemoteController)
+    net.addController('c0', controller=RemoteController, ip="192.168.0.1", port=6633)
     sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
     sw1 = net.addSwitch('sw1', ip=None, failMode='standalone')
 
