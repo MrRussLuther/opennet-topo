@@ -73,6 +73,9 @@ def myTopo():
 
     wifi.addSta(sta0, channelNumber=2, ssid="myNetwork")
     wifi.addSta(sta1, channelNumber=6, ssid="myNetwork")
+    
+    net.addLink(sw0, wap0)
+    net.addLink(sw1, wap1)
 
     net.addLink(c0, sw0)
     net.addLink(c0, sw1)
@@ -85,11 +88,12 @@ def myTopo():
     net.addLink(h4, sw1)
     net.addLink(h5, sw1)
 
-    net.addLink(sw0, wap0)
-    net.addLink(sw1, wap1)
-
     net.start()
     c0.start()
+    sw0.start()
+    sw1.start()
+    wap0.start()
+    wap1.start()
     mininet.ns3.start()
     CLI(net)
 
