@@ -76,8 +76,6 @@ def myTopo():
 
     net.start()
     c0.start()
-    sw0.start()
-    wap0.start()
     mininet.ns3.start()
     CLI(net)
 
