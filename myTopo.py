@@ -51,26 +51,41 @@ from mininet.opennet import *
 
 def myTopo():
 
-    net = Mininet(topo =None, controller=RemoteController)
+    net = Mininet(controller=RemoteController)
     c0 = net.addController('c0', controller=RemoteController, ip="192.168.56.102", port=6633)
     sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
     h0 = net.addHost('h0', ip="192.168.0.4")
     h1 = net.addHost('h1', ip="192.168.0.5")
     h2 = net.addHost('h2', ip="192.168.0.6")
+    sw1 = net.addSwitch('sw1', ip=None, failMode='standalone')
+    h3 = net.addHost('h3', ip="192.168.0.7")
+    h4 = net.addHost('h4', ip="192.168.0.8")
+    h5 = net.addHost('h5', ip="192.168.0.9")
 
     wap0 = net.addSwitch('wap0', ip=None, failMode='standalone')
+    wap1 = net.addSwitch('wap1', ip=None, failMode='standalone')
     sta0 = net.addHost('sta0', ip="192.168.0.2")
+    sta1 = net.addHost('sta1', ip="192.168.0.1")
 
     wifi = WIFISegment()
     wifi.addAp(wap0, channelNumber=2, ssid="myNetwork")
+    wifi.addAp(wap1, channelNumber=2, ssid="myNetwork")
 
     wifi.addSta(sta0, channelNumber=2, ssid="myNetwork")
+    wifi.addSta(sta1, channelNumber=2, ssid="myNetwork")
 
     net.addLink(sw0, wap0)
+    net.addLink(sw1, wap1)
+
+    net.addLink(c0, sw0)
+    net.addLink(c0, sw1)
 
     net.addLink(h0, sw0)
     net.addLink(h1, sw0)
     net.addLink(h2, sw0)
+    net.addLink(h3, sw1)
+    net.addLink(h4, sw1)
+    net.addLink(h5, sw1)
 
     net.start()
     c0.start()
