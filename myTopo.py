@@ -57,7 +57,10 @@ def myTopo():
     h0 = net.addHost('h0', ip="192.168.0.4")
     h1 = net.addHost('h1', ip="192.168.0.5")
     h2 = net.addHost('h2', ip="192.168.0.6")
-
+    sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
+    h3 = net.addHost('h3', ip="192.168.0.7")
+    h4 = net.addHost('h4', ip="192.168.0.8")
+    h5 = net.addHost('h5', ip="192.168.0.9")
 
     wap0 = net.addSwitch('wap0', ip=None, failMode='standalone')
     sta0 = net.addHost('sta0', ip="192.168.0.2")
