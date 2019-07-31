@@ -67,9 +67,7 @@ def myTopo():
     wifi.addAp(wap0, channelNumber=2, ssid="myNetwork")
     wifi.addSta(sta0, channelNumber=2, ssid="myNetwork")
     
-    net.addLink(c0, sw0)
     net.addLink(sw0, wap0)
-
     net.addLink(h0, sw0)
     net.addLink(h1, sw0)
     net.addLink(h2, sw0)
