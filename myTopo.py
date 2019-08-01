@@ -48,10 +48,9 @@ import ns.netanim
 
 from mininet.opennet import *
 
-
 def myTopo():
 
-    net = Mininet(topo =None, controller=RemoteController)
+    net = Mininet(topo = None, controller=RemoteController)
     c0 = net.addController('c0', controller=RemoteController, ip="192.168.56.102", port=6633)
     sw0 = net.addSwitch('sw0', ip=None, failMode='standalone')
     h0 = net.addHost('h0', ip="192.168.0.4")
@@ -64,12 +63,12 @@ def myTopo():
 
     wap0 = net.addSwitch('wap0', ip=None, failMode='standalone')
     sta0 = net.addHost('sta0', ip="192.168.0.2")
-   
 
     wifi = WIFISegment()
     wifi.addAp(wap0, channelNumber=2, ssid="myNetwork")
     wifi.addSta(sta0, channelNumber=2, ssid="myNetwork")
-    
+
+    net.addLink(sw0, sw1)
     net.addLink(sw0, wap0)
     net.addLink(h0, sw0)
     net.addLink(h1, sw0)
