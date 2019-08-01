@@ -65,11 +65,13 @@ def myTopo():
     sta0 = net.addHost('sta0', ip="192.168.0.2")
 
     wifi = WIFISegment()
+
     wifi.addAp(wap0, channelNumber=2, ssid="myNetwork")
     wifi.addSta(sta0, channelNumber=2, ssid="myNetwork")
 
     net.addLink(sw0, sw1)
     net.addLink(sw0, wap0)
+
     net.addLink(h0, sw0)
     net.addLink(h1, sw0)
     net.addLink(h2, sw0)
